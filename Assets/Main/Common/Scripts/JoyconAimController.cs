@@ -6,11 +6,23 @@ public class JoyconAimController : MonoBehaviour
     private List<Joycon> joycons;
     private Joycon joycon;
 
+    [Header("発射関連")]
     public Transform firePoint;
     public GameObject bulletPrefab;
+
+    [Header("クロスヘアUI")]
     public RectTransform crosshairUI;
     public Camera mainCamera;
-    private Quaternion joyconOffset = Quaternion.identity;
+
+    [Header("手振れ補正")]
+    public float smoothing = 5f; // 値を大きくすると追従速く、小さくすると揺れ減少
+
+    // 内部状態
+    private Vector3 initialEuler;   // リセット時の基準姿勢
+    private Vector3 smoothedEuler;  // 手振れ補正後の姿勢
+
+    private Quaternion initialRotation;   // リセット時の基準姿勢
+    private Quaternion smoothedRotation;  // 手振れ補正後
 
     void Start()
     {
@@ -18,7 +30,10 @@ public class JoyconAimController : MonoBehaviour
         if (joycons.Count < 1) return;
         joycon = joycons[0];
         if (mainCamera == null) mainCamera = Camera.main;
-        joyconOffset = Quaternion.Inverse(joycon.GetVector());
+
+        Quaternion rawOrientation = joycon.GetVector();
+        initialRotation = rawOrientation;
+        smoothedRotation = rawOrientation;
     }
 
     void Update()
@@ -26,41 +41,51 @@ public class JoyconAimController : MonoBehaviour
         if (joycon == null) return;
 
         Quaternion rawOrientation = joycon.GetVector();
-        Quaternion axisFix = Quaternion.Euler(90, 0, 0);
-        Quaternion orientation = axisFix * (rawOrientation * joyconOffset);
-        Vector3 direction = orientation * Vector3.forward;
 
-        // --- UI位置更新 ---
-        if (crosshairUI != null && mainCamera != null)
+        // HOMEボタンでリセット
+        if (joycon.GetButtonDown(Joycon.Button.HOME))
         {
-            Vector3 targetWorldPos = firePoint.position + direction * 10f;
-            Vector3 screenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
-
-            Canvas parentCanvas = crosshairUI.GetComponentInParent<Canvas>();
-            if (parentCanvas != null && parentCanvas.renderMode != RenderMode.WorldSpace)
-            {
-                RectTransform canvasRect = parentCanvas.GetComponent<RectTransform>();
-                Vector2 localPoint;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    canvasRect, screenPos, mainCamera, out localPoint);
-                crosshairUI.localPosition = localPoint;
-            }
-            else
-            {
-                crosshairUI.position = screenPos;
-            }
+            initialRotation = rawOrientation;
+            smoothedRotation = rawOrientation;
         }
 
-        // --- 発射 ---
+        // --- 相対Quaternion（初期姿勢を基準にする） ---
+        Quaternion relativeRotation = Quaternion.Inverse(initialRotation) * rawOrientation;
+
+        // --- 手振れ補正（Quaternion.Slerp） ---
+        smoothedRotation = Quaternion.Slerp(smoothedRotation, relativeRotation, Time.deltaTime * smoothing);
+
+        // --- 照準方向ベクトル ---
+        Vector3 direction = (Quaternion.Euler(90, 0, 0) * smoothedRotation) * Vector3.forward;
+
+        UpdateCrosshair(direction);
+
         if (joycon.GetButtonDown(Joycon.Button.SHOULDER_2))
         {
             FireBullet(direction);
         }
+    }
 
-        // --- キャリブレーション（HOMEボタン）---
-        if (joycon.GetButtonDown(Joycon.Button.HOME))
+
+    void UpdateCrosshair(Vector3 direction)
+    {
+        if (crosshairUI == null || mainCamera == null || firePoint == null) return;
+
+        Vector3 targetWorldPos = firePoint.position + direction * 10f;
+        Vector3 screenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
+
+        Canvas parentCanvas = crosshairUI.GetComponentInParent<Canvas>();
+        if (parentCanvas != null && parentCanvas.renderMode != RenderMode.WorldSpace)
         {
-            joyconOffset = Quaternion.Inverse(rawOrientation);
+            RectTransform canvasRect = parentCanvas.GetComponent<RectTransform>();
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRect, screenPos, mainCamera, out localPoint);
+            crosshairUI.localPosition = localPoint;
+        }
+        else
+        {
+            crosshairUI.position = screenPos;
         }
     }
 
@@ -70,6 +95,9 @@ public class JoyconAimController : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.linearVelocity = direction.normalized * 25f;
+        if (rb != null)
+        {
+            rb.linearVelocity = direction.normalized * 25f;
+        }
     }
 }
