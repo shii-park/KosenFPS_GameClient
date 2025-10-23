@@ -1,0 +1,77 @@
+# ================================
+# Unity project .gitignore
+# ================================
+
+# --- Unity generated folders ---
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# --- Crash reports ---
+sysinfo.txt
+*.stacktrace
+mono_crash.*
+
+# --- Asset Store cache ---
+[Aa]sset[Ss]tore/
+[Aa]sset[Ss]tore-5.x/
+
+# --- Addressables / cache ---
+[Aa]ssets/AddressableAssetsData/*/*.bin*
+[Aa]ssets/StreamingAssets/aa/*
+[Aa]ssets/StreamingAssets/aa.meta
+
+# --- Burst / DOTS cache ---
+[Bb]urstCache/
+[Bb]uildCache/
+
+# --- Build results / exported packages ---
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# --- VS / .NET generated files ---
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# --- JetBrains Rider ---
+.idea/
+*.sln.iml
+*.DotSettings
+
+# Rider specific cache files (already in your gitignore, merged here)
+.idea/**/workspace.xml
+.idea/**/usage.statisticsworkspace.xml
+.idea/**/tasks.xml
+
+# --- Visual Studio Code ---
+.vscode/
+
+# --- OS / misc ---
+.DS_Store
+*.swp
+*.tmp
+*.bak
+*.orig
+*.old
+
+# --- Crashlytics / Firebase ---
+crashlytics-build.properties
+
+# --- PlasticSCM / Unity Collaborate ---
+PlasticSCM/
+.plastic/
+.collab/
