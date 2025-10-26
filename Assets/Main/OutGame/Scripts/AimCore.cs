@@ -1,3 +1,4 @@
+using R3;
 using UnityEngine;
 
 public class AimCore : MonoBehaviour
@@ -13,4 +14,5 @@ public class AimCore : MonoBehaviour
     }
     
     public RectTransform AimTransform => this.gameObject.GetComponent<RectTransform>();
+    private ReactiveProperty<bool> isShot = new ReactiveProperty<bool>(false);
 }
