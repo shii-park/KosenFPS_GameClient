@@ -1,3 +1,4 @@
+using System;
 using R3;
 using UnityEngine;
 
@@ -12,7 +13,19 @@ public class AimCore : MonoBehaviour
             return _aimCore;
         }
     }
+
+    [SerializeField]
+    private AimInput _aimInput;
     
     public RectTransform AimTransform => this.gameObject.GetComponent<RectTransform>();
-    private ReactiveProperty<bool> isShot = new ReactiveProperty<bool>(false);
+    public ReadOnlyReactiveProperty<bool> IsShot => _aimInput.OnShotButtonPushed;
+
+    private void Start()
+    {
+        Debug.Log("SetCore");
+        IsShot.Subscribe(_ =>
+        {
+            Debug.Log("Shot!!!!!!!!!!!");
+        });
+    }
 }

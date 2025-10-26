@@ -5,6 +5,7 @@ public class JoyconAimController : MonoBehaviour
 {
     private List<Joycon> joycons;
     private Joycon joycon;
+    public Joycon Joycon { get { return joycon; } }
 
     [Header("発射関連")]
     public Transform firePoint;
