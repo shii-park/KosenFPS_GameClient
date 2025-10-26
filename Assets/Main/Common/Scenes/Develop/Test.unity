@@ -994,6 +994,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   crosshairUI: {fileID: 1865719094}
   mainCamera: {fileID: 1647554646}
+  smoothing: 10
 --- !u!1 &1849949405
 GameObject:
   m_ObjectHideFlags: 0
