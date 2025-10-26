@@ -22,8 +22,7 @@ public class AimCore : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("SetCore");
-        IsShot.Subscribe(_ =>
+        IsShot.Skip(1).Subscribe(_ =>
         {
             Debug.Log("Shot!!!!!!!!!!!");
         });
