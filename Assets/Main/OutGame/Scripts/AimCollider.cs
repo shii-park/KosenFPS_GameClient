@@ -8,11 +8,5 @@ public class AimCollider : MonoBehaviour
     
     private void Update() {
         //重なっているか判定
-        if (_rectTransform.IsOverlapping(_targetRectTransform)) {
-            Debug.Log($"重なっている");
-        }
-        else {
-            Debug.Log($"重なっていない");
-        }
     }
 }
