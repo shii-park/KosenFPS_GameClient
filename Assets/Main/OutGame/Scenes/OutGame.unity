@@ -426,10 +426,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 46712809}
-  - {fileID: 1028405334}
   - {fileID: 903917955}
   - {fileID: 648165290}
   - {fileID: 475684347}
+  - {fileID: 1028405334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1243,6 +1243,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _image: {fileID: 1058764189}
 --- !u!1 &1699683823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1347,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _image: {fileID: 367260234}
 --- !u!1 &1759054602
 GameObject:
   m_ObjectHideFlags: 0
