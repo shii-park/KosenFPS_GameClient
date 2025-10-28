@@ -16,6 +16,6 @@ public class SelectEvent : MonoBehaviour
 
     public void ChangeInGameScene()
     {
-        Debug.Log("シーンが変わるよ");
+        SceneManager.LoadScene("InGame");
     }
 }
