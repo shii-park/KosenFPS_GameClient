@@ -1,16 +1,31 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimerView : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+{    
+    [SerializeField]
+    private Text _mainTimertext;
+    
+    [SerializeField]
+    private GameObject _countDownUI;
+    
+    [SerializeField]
+    private Text _readyTimerText;
+
+    public void SetMainTimer(int time)
     {
-        
+        if(_mainTimertext == null) return;
+        _mainTimertext.text = time.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetReadyTimerText(int time)
     {
-        
+        if (_readyTimerText == null) return;
+        _readyTimerText.text = time.ToString();
+    }
+
+    public void DisplayCountDownUI(bool show)
+    {
+        _countDownUI.gameObject.SetActive(show);
     }
 }
