@@ -746,18 +746,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobustGyroAim
   serialReceiver: {fileID: 1865719097}
-  statusText: {fileID: 485042950}
-  sensitivity: 200
+  sensitivityX: 220
+  sensitivityY: 200
   deadZone: 0.1
-  calibrationTime: 3
-  stabilityThreshold: 10
-  successSound: {fileID: 0}
-  failSound: {fileID: 0}
-  gun_sound: {fileID: 0}
-  smoothTime: 0.05
   invertX: 0
   invertY: 0
-  shot: 0
+  calibrationTime: 3
+  stabilityThreshold: 10
+  smoothTime: 0.05
 --- !u!82 &1865719099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -869,6 +865,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SerialHand
   portName: COM3
   baudRate: 115200
+--- !u!1001 &3658320670778909114
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087229482565265366, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_Name
+      value: hosoyatani00
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a921b6d034869b40a0262978caad459, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -877,3 +930,4 @@ SceneRoots:
   - {fileID: 212646882}
   - {fileID: 271619137}
   - {fileID: 323799761}
+  - {fileID: 3658320670778909114}
