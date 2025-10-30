@@ -5,7 +5,7 @@ public class ScoreModel
 {
     public ScoreModel(int initialScore = 0)
     {
-        _score.Value = 0;
+        _score.Value = initialScore;
     }
     
     private ReactiveProperty<int> _score = new ReactiveProperty<int>(0);
