@@ -332,6 +332,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 38017627}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &38017629 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 38017627}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &57077983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,6 +417,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 57077983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &57077985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 57077983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1 &63649696
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +730,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 88692235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &88692237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 88692235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &109141706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1898,6 +1931,7 @@ GameObject:
   - component: {fileID: 354084157}
   - component: {fileID: 354084158}
   - component: {fileID: 354084159}
+  - component: {fileID: 354084160}
   m_Layer: 0
   m_Name: Summer Camera
   m_TagString: MainCamera
@@ -2066,6 +2100,32 @@ MonoBehaviour:
   aimUI: {fileID: 0}
   projectilePrefab: {fileID: 587292923427974064, guid: 23861af0b8cecf241835d0e5972a3b42, type: 3}
   shootForce: 75
+--- !u!114 &354084160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354084151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bebbcd478feea14b9d642138ee2368f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameProgresser
+  _fadeAnimation: {fileID: 2101103501}
+  _zonbieCores:
+  - {fileID: 1207849736}
+  - {fileID: 624969935}
+  - {fileID: 1994671585}
+  - {fileID: 57077985}
+  - {fileID: 1630699869}
+  - {fileID: 932197363}
+  - {fileID: 1595272995}
+  - {fileID: 88692237}
+  - {fileID: 1123101241}
+  - {fileID: 38017629}
+  - {fileID: 553606974}
+  - {fileID: 1105249259}
 --- !u!1001 &375703821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2379,6 +2439,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 553606972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &553606974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 553606972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &572938853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2609,6 +2680,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 624969933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &624969935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 624969933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &631363492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2796,8 +2878,8 @@ Transform:
   m_GameObject: {fileID: 760114529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9988774, z: -0, w: -0.047370687}
-  m_LocalPosition: {x: 164.17, y: 25.62, z: 15.66}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalPosition: {x: 164.17, y: 24.43, z: 15.66}
+  m_LocalScale: {x: 1.7999998, y: 1.8, z: 1.7999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809368673}
@@ -3172,9 +3254,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888290809}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9622245, z: -0, w: 0.2722572}
-  m_LocalPosition: {x: 151.01, y: -0.059999943, z: -28.41}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalRotation: {x: -0, y: 0.96222454, z: -0, w: 0.27225724}
+  m_LocalPosition: {x: 153.69, y: 0.58, z: -30.37}
+  m_LocalScale: {x: 1.7999994, y: 1.8, z: 1.7999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809368673}
@@ -3343,15 +3425,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 151.01
+      value: 153.69
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.059999943
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.41
+      value: -30.37
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3395,6 +3477,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 932197361}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &932197363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 932197361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1 &934330421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,6 +3855,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1105249257}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1105249259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1105249257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1 &1111499347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,6 +4115,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1123101239}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1123101241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1123101239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &1175071814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4166,6 +4281,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1207849732}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1207849736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1207849732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207849733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &1271656923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5072,7 +5198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 151.55
+      value: 154.32
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5080,7 +5206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.5
+      value: -36.54
       objectReference: {fileID: 0}
     - target: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5124,6 +5250,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1595272993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1595272995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1595272993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &1625935033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5306,6 +5443,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1630699867}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1630699869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1630699867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &1708705940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6425,9 +6573,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983794456}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9622245, z: -0, w: 0.2722572}
-  m_LocalPosition: {x: 151.55, y: -0.059999943, z: -33.5}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalRotation: {x: -0, y: 0.96222454, z: -0, w: 0.27225724}
+  m_LocalPosition: {x: 154.32, y: -0.059999943, z: -36.54}
+  m_LocalScale: {x: 1.7999994, y: 1.8, z: 1.7999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809368673}
@@ -6506,6 +6654,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6892753665808827840, guid: 4a921b6d034869b40a0262978caad459, type: 3}
   m_PrefabInstance: {fileID: 1994671583}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1994671585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+  m_PrefabInstance: {fileID: 1994671583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
 --- !u!1001 &1996138677
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,12 +24,12 @@ public class FadeAnimation : MonoBehaviour
     public void FadeIn()
     {
         _isCompleteFadein.Value = false;
-        _image.DOFade(0, 1).OnComplete(() => _isCompleteFadein.Value = true);
+        _image.DOFade(0, 0.5f).OnComplete(() => _isCompleteFadein.Value = true);
     }
 
     public void FadeOut()
     {
         _isCompleteFadeout.Value = false;
-        _image.DOFade(1, 3).OnComplete(() => _isCompleteFadeout.Value = true);
+        _image.DOFade(1, 1).OnComplete(() => _isCompleteFadeout.Value = true);
     }
 }

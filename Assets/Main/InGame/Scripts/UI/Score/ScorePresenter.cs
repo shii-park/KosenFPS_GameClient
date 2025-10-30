@@ -4,6 +4,7 @@ using R3;
 public class ScorePresenter : MonoBehaviour
 {
     private ScoreModel _scoreModel = new ScoreModel();
+    public ScoreModel ScoreModel => _scoreModel;
     
     [SerializeField]
     private ScoreView _scoreView;
