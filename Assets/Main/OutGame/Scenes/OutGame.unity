@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 28809979}
   - component: {fileID: 28809978}
   - component: {fileID: 28809981}
+  - component: {fileID: 28809982}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &28809982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28809977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8f2377194a2f143ba8d8e0d9dd7131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectEvent
 --- !u!1 &46712808
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14633e3a85344041aab6d6e977723c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AimCore
-  _aimInput: {fileID: 0}
+  _crosshairMover: {fileID: 1028405339}
 --- !u!114 &1028405339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +924,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StableGyroAim_NoAudio_Flip
   serialReceiver: {fileID: 1028405340}
-  statusText: {fileID: 0}
   sensitivity: 200
   deadZone: 0.1
   invertX: 1
@@ -1191,7 +1203,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 28809982}
         m_TargetAssemblyTypeName: SelectEvent, Assembly-CSharp
         m_MethodName: ChangeInGameScene
         m_Mode: 1
@@ -1295,7 +1307,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 28809982}
         m_TargetAssemblyTypeName: SelectEvent, Assembly-CSharp
         m_MethodName: QuitApplication
         m_Mode: 1
