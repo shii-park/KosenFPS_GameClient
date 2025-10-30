@@ -1,8 +1,11 @@
+using R3;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SelectEvent : MonoBehaviour
 {
+    [SerializeField]
+    FadeAnimation _fadeAnimation;
     public void Test()
     {
         Debug.Log("Test");
@@ -16,7 +19,13 @@ public class SelectEvent : MonoBehaviour
 
     public void ChangeInGameScene()
     {
-        SceneManager.LoadScene("InGame");
+        _fadeAnimation.FadeOut();
+        _fadeAnimation.IsCompleteFadeout.Where(value => value).Subscribe(_ => SceneManager.LoadScene("InGame"));
+    }
+    public void ChangeOutGameScene()
+    {
+        _fadeAnimation.FadeOut();
+        _fadeAnimation.IsCompleteFadeout.Where(value => value).Subscribe(_ => SceneManager.LoadScene("OutGame"));
     }
 
     public void StopTimer()
