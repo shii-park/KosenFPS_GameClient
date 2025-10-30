@@ -21,7 +21,7 @@ public class SerialReceive : MonoBehaviour
         try
         {
             // 受信したデータをコンソールに表示
-            Debug.Log("受信生データ: " + message);
+            //Debug.Log("受信生データ: " + message);
 
             // カンマで分割して、文字列の配列にする
             string[] values = message.Split(',');
@@ -41,8 +41,8 @@ public class SerialReceive : MonoBehaviour
             float gz = float.Parse(values[5]);
 
             // 変換した値をコンソールに表示して確認
-            Debug.Log(string.Format("Accel: (X:{0}, Y:{1}, Z:{2})", ax, ay, az));
-            Debug.Log(string.Format("Gyro:  (X:{0}, Y:{1}, Z:{2})", gx, gy, gz));
+            //Debug.Log(string.Format("Accel: (X:{0}, Y:{1}, Z:{2})", ax, ay, az));
+            //Debug.Log(string.Format("Gyro:  (X:{0}, Y:{1}, Z:{2})", gx, gy, gz));
 
             // ここで値を使ってオブジェクトを動かすなどの処理を行う
             // transform.rotation = ...

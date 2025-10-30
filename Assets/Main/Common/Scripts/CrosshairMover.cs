@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using R3;
 
 [RequireComponent(typeof(RectTransform))]
-public class StableGyroAim_NoAudio_Flip : MonoBehaviour
+public class CrosshairMover : MonoBehaviour
 {
     private enum AimState { Calibrating, Running, Failed }
 
@@ -44,10 +45,13 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
     private List<Vector2> calibrationSamples = new List<Vector2>();
 
     private Rect parentRect;
-    private bool shot = false;
+    private ReactiveProperty<bool> _shot = new ReactiveProperty<bool>();
+    public ReactiveProperty<bool> ShotReactiveProperty => _shot;
 
     void Start()
     {
+        _shot.Value = false;
+        
         rectTransform = GetComponent<RectTransform>();
 
         if (serialReceiver == null)
@@ -101,8 +105,7 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
 
                 currentAngularVelocity = correctedGyro;
 
-                if (values.Length > 6 && float.TryParse(values[6], out float shotVal))
-                    shot = (shotVal == 1f);
+                _shot.Value = (values[6] == "1");
             }
         }
         catch { /* 無視 */ }
@@ -115,6 +118,7 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
             StartCalibration();
             return;
         }
+        
 
         if (currentState == AimState.Calibrating)
         {
@@ -134,7 +138,7 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
 
             rectTransform.anchoredPosition = currentAimPosition;
 
-            shot = false;
+            _shot.Value = false;
         }
     }
 
