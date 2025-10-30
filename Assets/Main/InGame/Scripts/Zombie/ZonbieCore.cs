@@ -18,32 +18,33 @@ public class ZonbieCore : MonoBehaviour
 
     [SerializeField]
     private Transform _first;
-    [SerializeField]
-    private Transform _end;
     private float _time = 2;
 
     public void Start()
     {
-        ResetZombie(_first, _end, _time);
-        StartCoroutine(TestCoroutine());
-    }
-
-    private IEnumerator TestCoroutine()
-    {
-        yield return new WaitForSeconds(3);
-        Dead(new Vector3(1,1,1));
+        ResetZombie(_first, _first, _time);
     }
     
-    public void ResetZombie(Transform firstTransform ,Transform destination, float time)
+    public void ResetZombie(Transform firstTransform, Transform destination, float time)
     {
         _isDead.Value = false;
+
+        // 位置
         this.transform.position = firstTransform.position;
+
+        // 初期向き（Y軸のみ）
+        Vector3 flatForward = new Vector3(firstTransform.forward.x, 0f, firstTransform.forward.z);
+        if (flatForward.sqrMagnitude > 0.0001f)
+        {
+            this.transform.rotation = Quaternion.LookRotation(flatForward, Vector3.up);
+        }
+
         this.gameObject.SetActive(true);
-        
+
         _animator.SetBool("Dead", false);
-        
-        _zonbieMover.StartMove(destination, time);
+        //_zonbieMover.StartMove(destination, time);
     }
+
 
     public void Dead(Vector3 powerVector)
     {
