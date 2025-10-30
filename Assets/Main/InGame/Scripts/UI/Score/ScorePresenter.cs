@@ -1,16 +1,48 @@
 using UnityEngine;
+using R3;
 
 public class ScorePresenter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private ScoreModel _scoreModel = new ScoreModel();
+    
+    [SerializeField]
+    private ScoreView _scoreView;
+    
+    public static ScorePresenter Instance { get; private set; }
+
+    void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public void Init()
+    {
+        _scoreModel.ResetScore();
+        _scoreModel.Score.Subscribe(score =>
+        {
+            _scoreView.SetScore(score);
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddScore(int score = 0)
     {
-        
+        _scoreModel.AddScore(score);
+    }
+    
+    public void SubtractScore(int subtractScore = 1)
+    {
+        _scoreModel.SubtractScore(subtractScore);
+    }
+
+    public void Reset()
+    {
+        _scoreModel.ResetScore();
     }
 }
