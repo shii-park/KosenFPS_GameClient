@@ -18,4 +18,10 @@ public class SelectEvent : MonoBehaviour
     {
         SceneManager.LoadScene("InGame");
     }
+
+    public void StopTimer()
+    {
+        Debug.Log("StopTimer");
+        TimerPresenter.Instance.PauseMainGameTimer();
+    }
 }
