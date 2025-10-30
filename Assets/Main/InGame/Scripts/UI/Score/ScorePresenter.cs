@@ -31,7 +31,7 @@ public class ScorePresenter : MonoBehaviour
         });
     }
 
-    public void AddScore(int score = 0)
+    public void AddScore(int score = 1)
     {
         _scoreModel.AddScore(score);
     }

@@ -4095,6 +4095,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2005829199}
   - component: {fileID: 2005829200}
+  - component: {fileID: 2005829202}
+  - component: {fileID: 2005829201}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -4137,6 +4139,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &2005829201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005829198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c0743e9ee41784ca4c22b43d10fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScorePresenter
+  _scoreView: {fileID: 2005829202}
+--- !u!114 &2005829202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005829198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94f63858448e5144ade941ab09d89ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreView
+  _text: {fileID: 63649698}
 --- !u!1001 &2061517834
 PrefabInstance:
   m_ObjectHideFlags: 0

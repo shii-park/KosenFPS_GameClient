@@ -8,6 +8,7 @@ public class ScoreView : MonoBehaviour
 
     public void SetScore(int score)
     {
+        if(_text == null) return;
         _text.text = score.ToString();
     }
 }
