@@ -8,16 +8,17 @@ public class AimCore : MonoBehaviour
 
 
     [SerializeField]
-    private AimInput _aimInput;
+    private CrosshairMover _crosshairMover;
     
-    public RectTransform AimTransform => this.gameObject.GetComponent<RectTransform>();
-    public ReadOnlyReactiveProperty<bool> IsShot => _aimInput.OnShotButtonPushed;
+    public RectTransform AimTransform;
+    public ReadOnlyReactiveProperty<bool> IsShot => _crosshairMover.ShotReactiveProperty;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

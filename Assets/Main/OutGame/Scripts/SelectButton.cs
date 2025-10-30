@@ -26,7 +26,7 @@ public class SelectButton : MonoBehaviour
                 _isSelected.Value = isSelected;
             })
             .AddTo(this);
-
+        
         _aimCore.IsShot.Where(_ => _isSelected.CurrentValue).Subscribe(_ =>
         {
             _event.Invoke();

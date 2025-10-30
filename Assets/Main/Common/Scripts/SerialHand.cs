@@ -24,12 +24,6 @@ public class SerialHand : MonoBehaviour
 
     void Update()
     {
-
-        if (messageQueue_.Count > 0) 
-        {
-            Debug.Log("キューに " + messageQueue_.Count + " 件のデータがあります。処理します。");
-        }
-
         while (messageQueue_.TryDequeue(out string message))
         {
             OnDataReceived?.Invoke(message);
