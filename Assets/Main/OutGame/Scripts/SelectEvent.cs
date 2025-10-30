@@ -6,6 +6,8 @@ public class SelectEvent : MonoBehaviour
 {
     [SerializeField]
     FadeAnimation _fadeAnimation;
+
+    private bool _isChangeScene = false;
     public void Test()
     {
         Debug.Log("Test");
@@ -19,11 +21,17 @@ public class SelectEvent : MonoBehaviour
 
     public void ChangeInGameScene()
     {
+        if (_isChangeScene == true) return;
+        _isChangeScene = true;
+        
         _fadeAnimation.FadeOut();
         _fadeAnimation.IsCompleteFadeout.Where(value => value).Subscribe(_ => SceneManager.LoadScene("InGame"));
     }
     public void ChangeOutGameScene()
     {
+        if (_isChangeScene == true) return;
+        _isChangeScene = true;
+        
         _fadeAnimation.FadeOut();
         _fadeAnimation.IsCompleteFadeout.Where(value => value).Subscribe(_ => SceneManager.LoadScene("OutGame"));
     }
