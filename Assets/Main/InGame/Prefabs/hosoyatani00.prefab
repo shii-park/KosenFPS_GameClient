@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6511476933772345714}
   - component: {fileID: 6316788045314717999}
   - component: {fileID: 6577690766027592172}
-  - component: {fileID: 6172437196641324790}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -90,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6172437196641324790
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953218363330650296}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1747186574652950960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,15 +295,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5159078012444724336, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 156.36
       objectReference: {fileID: 0}
     - target: {fileID: 5159078012444724336, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 5159078012444724336, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.64
+      value: -36.29
       objectReference: {fileID: 0}
     - target: {fileID: 5159078012444724336, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
       propertyPath: m_LocalRotation.w
@@ -365,8 +343,76 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7368058352390773910, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6511476933772345714}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -1728013695380148634, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3829301839349239471}
+    - targetCorrespondingSourceObject: {fileID: -1728013695380148634, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2123085926671336848}
+    - targetCorrespondingSourceObject: {fileID: -1728013695380148634, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4620622269285785059}
   m_SourcePrefab: {fileID: -3956505258223990651, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+--- !u!95 &6604789575052654513 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4870552773557632513, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+  m_PrefabInstance: {fileID: 1747186574652950960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8087229482565265366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1728013695380148634, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
+  m_PrefabInstance: {fileID: 1747186574652950960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3829301839349239471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087229482565265366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0a9b254f4ab564a94d09c017608177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieCore
+  _zonbieMover: {fileID: 2123085926671336848}
+  _animator: {fileID: 6604789575052654513}
+  _first: {fileID: 0}
+  _end: {fileID: 0}
+--- !u!114 &2123085926671336848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087229482565265366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a074c9ab888cfde49a77cb75c81ec543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonbieMover
+--- !u!65 &4620622269285785059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087229482565265366}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6998614, y: 1.5263906, z: 0.43818808}
+  m_Center: {x: 0, y: 0.70000005, z: 0}
 --- !u!4 &9115244853945390374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7368058352390773910, guid: c805e4a49cf7a7141b69872d24a34026, type: 3}
