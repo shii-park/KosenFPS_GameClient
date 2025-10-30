@@ -807,6 +807,8 @@ GameObject:
   - component: {fileID: 1028405335}
   - component: {fileID: 1028405337}
   - component: {fileID: 1028405338}
+  - component: {fileID: 1028405341}
+  - component: {fileID: 1028405340}
   - component: {fileID: 1028405339}
   m_Layer: 5
   m_Name: RawImage
@@ -895,7 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14633e3a85344041aab6d6e977723c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AimCore
-  _aimInput: {fileID: 1028405339}
+  _aimInput: {fileID: 0}
 --- !u!114 &1028405339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,10 +907,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 1028405333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3fd31596783614580ccb09da56fe79, type: 3}
+  m_Script: {fileID: 11500000, guid: 277832a33a763ab449d5257b630a6fbb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AimInput
-  joyconAimController: {fileID: 1168960335}
+  m_EditorClassIdentifier: Assembly-CSharp::StableGyroAim_NoAudio_Flip
+  serialReceiver: {fileID: 1028405340}
+  statusText: {fileID: 0}
+  sensitivity: 200
+  deadZone: 0.1
+  invertX: 1
+  invertY: 0
+  calibrationTime: 3
+  stabilityThreshold: 10
+  smoothTime: 0.05
+--- !u!114 &1028405340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028405333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1a6261fb056f46aff7296d87874e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SerialReceive
+  serialHand: {fileID: 1028405341}
+--- !u!114 &1028405341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028405333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6918059ba8a71443a21968e52518421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SerialHand
+  portName: COM3
+  baudRate: 115200
 --- !u!1 &1058764187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,83 +1100,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134728956}
   m_CullTransparentMesh: 1
---- !u!1 &1168960334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1168960337}
-  - component: {fileID: 1168960336}
-  - component: {fileID: 1168960335}
-  - component: {fileID: 1168960338}
-  m_Layer: 0
-  m_Name: JoyConManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1168960335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168960334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d2791b270372449a245b6ada18e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JoyconAimController
-  firePoint: {fileID: 1848794980}
-  bulletPrefab: {fileID: 0}
-  crosshairUI: {fileID: 1028405334}
-  mainCamera: {fileID: 28809979}
-  smoothing: 10
---- !u!114 &1168960336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168960334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405bad29b2b998c408059182c189d9e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JoyconManager
-  EnableIMU: 1
-  EnableLocalize: 1
---- !u!4 &1168960337
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168960334}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1168960338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168960334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e8f2377194a2f143ba8d8e0d9dd7131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelectEvent
 --- !u!1 &1568644044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1191,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1168960338}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectEvent, Assembly-CSharp
         m_MethodName: ChangeInGameScene
         m_Mode: 1
@@ -1335,7 +1295,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1168960338}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectEvent, Assembly-CSharp
         m_MethodName: QuitApplication
         m_Mode: 1
@@ -1626,4 +1586,3 @@ SceneRoots:
   - {fileID: 272798784}
   - {fileID: 1800004715}
   - {fileID: 1848794980}
-  - {fileID: 1168960337}

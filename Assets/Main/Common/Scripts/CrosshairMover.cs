@@ -10,7 +10,6 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
 
     [Header("Dependencies")]
     public SerialReceive serialReceiver;
-    public Text statusText;
 
     [Header("Aim Settings")]
     public float sensitivity = 200f;
@@ -120,8 +119,6 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
         if (currentState == AimState.Calibrating)
         {
             calibrationTimer -= Time.deltaTime;
-            if (statusText != null)
-                statusText.text = $"Calibrating... Keep device still.\n{calibrationTimer:F1}s";
 
             if (calibrationTimer <= 0f)
                 FinishCalibration();
@@ -180,7 +177,6 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
     private void SucceedCalibration()
     {
         currentState = AimState.Running;
-        if (statusText != null) statusText.text = "Aiming (Press 'R' to re-calibrate)";
         Debug.Log("Calibration successful!");
         currentAimPosition = Vector2.zero;
     }
@@ -188,8 +184,6 @@ public class StableGyroAim_NoAudio_Flip : MonoBehaviour
     private void FailCalibration(string reason)
     {
         currentState = AimState.Failed;
-        if (statusText != null)
-            statusText.text = $"Calibration FAILED!\n{reason}\n(Press 'R' to try again)";
         Debug.LogError("Calibration FAILED! Reason: " + reason);
     }
 }
