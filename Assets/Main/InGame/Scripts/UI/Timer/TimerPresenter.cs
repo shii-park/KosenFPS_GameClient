@@ -6,6 +6,7 @@ public class TimerPresenter : MonoBehaviour
 {
     [SerializeField] private TimerView _view;
     private TimerModel _model = new TimerModel();
+    public TimerModel Model => _model;
     private Coroutine _timerCoroutine;
     
     private bool _isMainTimerRunning = false;
@@ -28,21 +29,11 @@ public class TimerPresenter : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        Init();
-    }
-
-    void Init()
+    public void Init()
     {
         _model.MainGameTimer.Subscribe(value =>
         {
             _view.SetMainTimer(value);
-        });
-        
-        _model.MainGameTimer.Where(value => value <= 0).Subscribe(value =>
-        {
-            Debug.Log("Game End");
         });
 
 
@@ -86,9 +77,7 @@ public class TimerPresenter : MonoBehaviour
 
     private IEnumerator Pause()
     {
-        Debug.Log("PauseMae");
         yield return new WaitForSeconds(3f);
-        Debug.Log("PauseGO");
         StartReadyTimer();
     }
 
