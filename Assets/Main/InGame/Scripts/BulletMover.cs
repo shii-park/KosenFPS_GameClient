@@ -15,12 +15,20 @@ public class BulletMover : MonoBehaviour
     private void Start()
     {
         aimUI = AimCore.Instance.AimTransform;
+        
+        mainCamera = Camera.main;
 
-        AimCore.Instance.IsShot.Where(value => value && GameProgresser.Instance.CurrentGameState.CurrentValue == GameState.Playing).Subscribe(_ => Shoot());
+        AimCore.Instance.IsShot.Where(value => value && GameProgresser.Instance.CurrentGameState.CurrentValue == GameState.Playing).Subscribe(_ => Shoot()).AddTo(this);
     }
 
     public void Shoot()
     {
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        if (mainCamera == null || aimUI == null)
+            return;
+        
         // UIのスクリーン座標を取得
         Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(null, aimUI.position);
 

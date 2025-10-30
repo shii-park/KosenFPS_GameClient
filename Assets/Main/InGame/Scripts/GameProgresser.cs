@@ -22,6 +22,9 @@ public class GameProgresser : MonoBehaviour
     [SerializeField]
     private List<ZonbieCore> _zonbieCores;
     
+    [SerializeField]
+    private ResultView _resultView;
+    
     public static GameProgresser  Instance { get; private set; }
     
     private ReactiveProperty<GameState> _gameState = new ReactiveProperty<GameState>(GameState.Ready);
@@ -62,14 +65,21 @@ public class GameProgresser : MonoBehaviour
 
         _scorePresenter.ScoreModel.Score.Where(value => value >= _zonbieCores.Count).Subscribe(_ =>
         {
-            Debug.Log($"value:{_}");
+            ShowResult();
+            _timer.StopMainGameTimer();
             _gameState.Value = GameState.Result;
         });
 
         _timer.Model.MainGameTimer.Where(value => value <= 0).Subscribe(_ =>
         {
-            Debug.Log("Game Over");
+            ShowResult();
             _gameState.Value = GameState.Result;
         });
+    }
+
+    private void ShowResult()
+    {
+        _resultView.SetActiveUI(true);
+        _resultView.SetText(_scorePresenter.ScoreModel.Score.CurrentValue,_timer.Model.MainGameTimer.CurrentValue);
     }
 }

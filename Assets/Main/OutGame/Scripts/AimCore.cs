@@ -12,12 +12,16 @@ public class AimCore : MonoBehaviour
     
     public RectTransform AimTransform;
     public ReadOnlyReactiveProperty<bool> IsShot => _crosshairMover.ShotReactiveProperty;
+    
+    [SerializeField]
+    private SerialHand _serialHand;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            _serialHand.Open();
             DontDestroyOnLoad(gameObject);
         }
         else

@@ -17,11 +17,6 @@ public class SerialHand : MonoBehaviour
 
     private ConcurrentQueue<string> messageQueue_ = new ConcurrentQueue<string>();
 
-    void Awake()
-    {
-        Open();
-    }
-
     void Update()
     {
         while (messageQueue_.TryDequeue(out string message))
@@ -35,7 +30,7 @@ public class SerialHand : MonoBehaviour
         Close();
     }
 
-    private void Open()
+    public void Open()
     {
         try 
         {
