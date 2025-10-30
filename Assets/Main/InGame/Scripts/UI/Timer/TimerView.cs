@@ -12,20 +12,21 @@ public class TimerView : MonoBehaviour
     [SerializeField]
     private Text _readyTimerText;
 
-    public void SetMainTimer(int time)
+    public void SetMainTimer(float time)
     {
         if(_mainTimertext == null) return;
-        _mainTimertext.text = time.ToString();
+        _mainTimertext.text = time.ToString("F");
     }
 
-    public void SetReadyTimerText(int time)
+    public void SetReadyTimerText(float time)
     {
         if (_readyTimerText == null) return;
-        _readyTimerText.text = time.ToString();
+        _readyTimerText.text = Mathf.Floor(time) == 0 ? "Go!!" : Mathf.Floor(time).ToString();
     }
 
     public void DisplayCountDownUI(bool show)
     {
+        Debug.Log($"show:{show}");
         _countDownUI.gameObject.SetActive(show);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class TimerModel
 {
     public const float DefaultGameSeconds = 60f;
-    public const float DefaultReadySeconds = 3f;
+    public const float DefaultReadySeconds = 4f;
 
     private readonly ReactiveProperty<float> _mainGameTimer = new(DefaultGameSeconds);
     public ReactiveProperty<float> MainGameTimer => _mainGameTimer;
