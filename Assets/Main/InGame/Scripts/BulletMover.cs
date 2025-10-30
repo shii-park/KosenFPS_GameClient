@@ -16,7 +16,7 @@ public class BulletMover : MonoBehaviour
     {
         aimUI = AimCore.Instance.AimTransform;
 
-        AimCore.Instance.IsShot.Where(value => value).Subscribe(_ => Shoot());
+        AimCore.Instance.IsShot.Where(value => value && GameProgresser.Instance.CurrentGameState.CurrentValue == GameState.Playing).Subscribe(_ => Shoot());
     }
 
     public void Shoot()

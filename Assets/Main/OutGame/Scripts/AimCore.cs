@@ -25,12 +25,4 @@ public class AimCore : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Start()
-    {
-        IsShot.Skip(1).Subscribe(_ =>
-        {
-            Debug.Log("Shot!!!!!!!!!!!");
-        });
-    }
 }

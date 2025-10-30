@@ -24,11 +24,12 @@ public class GameProgresser : MonoBehaviour
     
     public static GameProgresser  Instance { get; private set; }
     
-    private ReactiveProperty<GameState> _gameState = new ReactiveProperty<GameState>();
+    private ReactiveProperty<GameState> _gameState = new ReactiveProperty<GameState>(GameState.Ready);
     public ReactiveProperty<GameState> CurrentGameState => _gameState; 
     
     void Awake()
     {
+        _gameState.Value = GameState.Ready;
         if (Instance == null)
         {
             Instance = this;
@@ -40,7 +41,6 @@ public class GameProgresser : MonoBehaviour
     }
     void Start()
     {
-        _gameState.Value = GameState.Ready;
         _timer = TimerPresenter.Instance;
         _scorePresenter = ScorePresenter.Instance;
         
@@ -55,14 +55,14 @@ public class GameProgresser : MonoBehaviour
             }
         });
         
-        _timer.Model.ReadyGameTimer.Where(value => value <= 0).Subscribe(_ =>
+        _timer.Model.ReadyGameTimer.Where(value => value <= 0).Skip(1).Subscribe(_ =>
         {
             _gameState.Value = GameState.Playing;
         });
 
-        _scorePresenter.ScoreModel.Score.Where(value => value == _zonbieCores.Count).Subscribe(_ =>
+        _scorePresenter.ScoreModel.Score.Where(value => value >= _zonbieCores.Count).Subscribe(_ =>
         {
-            Debug.Log("Game Over");
+            Debug.Log($"value:{_}");
             _gameState.Value = GameState.Result;
         });
 
