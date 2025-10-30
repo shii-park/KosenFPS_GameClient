@@ -10,7 +10,7 @@ public class AimCore : MonoBehaviour
     [SerializeField]
     private CrosshairMover _crosshairMover;
     
-    public RectTransform AimTransform => this.gameObject.GetComponent<RectTransform>();
+    public RectTransform AimTransform;
     public ReadOnlyReactiveProperty<bool> IsShot => _crosshairMover.ShotReactiveProperty;
 
     void Awake()
@@ -18,6 +18,7 @@ public class AimCore : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
