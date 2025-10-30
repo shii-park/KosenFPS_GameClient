@@ -18,23 +18,25 @@ public class SelectButton : MonoBehaviour
     
     void Start()
     {
+        if(_aimCore == null)return;
+        
         Observable.Interval(TimeSpan.FromSeconds(0.1)) // 0.5秒ごとにチェック
-            .Select(_ => this.gameObject.GetComponent<RectTransform>().IsOverlapping(AimCore.Instance.AimTransform)) // 任意の関数
+            .Select(_ => this.gameObject.GetComponent<RectTransform>().IsOverlapping(_aimCore.AimTransform)) // 任意の関数
             .DistinctUntilChanged()
             .Subscribe(isSelected =>
             {
                 _isSelected.Value = isSelected;
             })
             .AddTo(this);
-        
-        _aimCore.IsShot.Where(_ => _isSelected.CurrentValue).Subscribe(_ =>
-        {
-            _event.Invoke();
-        });
 
         _isSelected.Subscribe(isSelected =>
         {
             _image.enabled = isSelected;
+        });
+        
+        _aimCore.IsShot.Where(_ => _isSelected.CurrentValue).Subscribe(_ =>
+        {
+            _event.Invoke();
         });
     }
 

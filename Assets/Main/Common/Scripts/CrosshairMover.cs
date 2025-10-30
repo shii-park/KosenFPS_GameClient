@@ -149,8 +149,8 @@ public class CrosshairMover : MonoBehaviour
                 bufferCount = 0;
             }
 
-            Vector2 deltaPosition = currentAngularVelocity * sensitivityX * Time.deltaTime;
-            deltaPosition.y = currentAngularVelocity.y * sensitivityY * Time.deltaTime;
+            Vector2 deltaPosition = currentAngularVelocity * (sensitivityX + 1000) * Time.deltaTime;
+            deltaPosition.y = currentAngularVelocity.y * (sensitivityY + 1000) * Time.deltaTime;
 
 #else
             // Windowsビルドのみフレーム補正＆バッファ平均化
