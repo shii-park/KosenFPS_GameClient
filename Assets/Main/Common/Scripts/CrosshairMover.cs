@@ -12,46 +12,51 @@ public class CrosshairMover : MonoBehaviour
     [Header("Dependencies")]
     public SerialReceive serialReceiver;
 
+    [Header("Axis Sensitivity")]
+    [Tooltip("左右(X)方向の感度")]
+    public float sensitivityX = 220f; 
+    [Tooltip("上下(Y)方向の感度")]
+    public float sensitivityY = 200f; 
+
     [Header("Aim Settings")]
-    public float sensitivity = 200f;
     [Tooltip("微小なノイズを無視する範囲")]
     public float deadZone = 0.1f;
 
     [Header("Axis Inversion")]
-    [Tooltip("X軸を反転するか")]
     public bool invertX = true;
-    [Tooltip("Y軸を反転するか")]
     public bool invertY = false;
 
     [Header("Calibration Settings")]
     public float calibrationTime = 3.0f;
-    [Tooltip("キャリブレーション中のばらつきの許容値")]
     public float stabilityThreshold = 10f;
 
     [Header("Smoothing")]
-    [Tooltip("小さいほど敏感、大きいほど滑らか")]
     public float smoothTime = 0.05f;
 
     private RectTransform rectTransform;
     private Vector2 currentAimPosition;
-    private Vector2 currentAngularVelocity;
     private Vector2 smoothVelocity;
 
     private AimState currentState;
 
-    // キャリブレーション用
     private float calibrationTimer;
     private Vector2 gyroOffset = Vector2.zero;
     private List<Vector2> calibrationSamples = new List<Vector2>();
 
     private Rect parentRect;
+
     private ReactiveProperty<bool> _shot = new ReactiveProperty<bool>();
     public ReactiveProperty<bool> ShotReactiveProperty => _shot;
+
+    // -----------------------------
+    // バッファ用（Windowsビルド用）
+    private Vector2 gyroBuffer = Vector2.zero;
+    private int bufferCount = 0;
+    // -----------------------------
 
     void Start()
     {
         _shot.Value = false;
-        
         rectTransform = GetComponent<RectTransform>();
 
         if (serialReceiver == null)
@@ -95,17 +100,23 @@ public class CrosshairMover : MonoBehaviour
             {
                 Vector2 correctedGyro = rawGyroInput - gyroOffset;
 
-                // デッドゾーン
                 if (Mathf.Abs(correctedGyro.x) < deadZone) correctedGyro.x = 0;
                 if (Mathf.Abs(correctedGyro.y) < deadZone) correctedGyro.y = 0;
 
-                // 軸反転
                 if (invertX) correctedGyro.x *= -1;
                 if (invertY) correctedGyro.y *= -1;
 
-                currentAngularVelocity = correctedGyro;
+#if UNITY_EDITOR
+                // Editorではバッファ化せずそのまま
+                gyroBuffer = correctedGyro;
+                bufferCount = 1;
+#else
+                // Windowsビルドではバッファに追加
+                gyroBuffer += correctedGyro;
+                bufferCount++;
+#endif
 
-                _shot.Value = (values[6] == "1");
+                _shot.Value = (values.Length > 6 && values[6] == "1");
             }
         }
         catch { /* 無視 */ }
@@ -118,18 +129,44 @@ public class CrosshairMover : MonoBehaviour
             StartCalibration();
             return;
         }
-        
 
         if (currentState == AimState.Calibrating)
         {
             calibrationTimer -= Time.deltaTime;
-
             if (calibrationTimer <= 0f)
                 FinishCalibration();
         }
         else if (currentState == AimState.Running)
         {
-            Vector2 deltaPosition = currentAngularVelocity * sensitivity * Time.deltaTime;
+            Vector2 currentAngularVelocity = Vector2.zero;
+
+#if UNITY_EDITOR
+            // Editorではそのまま
+            if (bufferCount > 0)
+            {
+                currentAngularVelocity = gyroBuffer;
+                gyroBuffer = Vector2.zero;
+                bufferCount = 0;
+            }
+
+            Vector2 deltaPosition = currentAngularVelocity * sensitivityX * Time.deltaTime;
+            deltaPosition.y = currentAngularVelocity.y * sensitivityY * Time.deltaTime;
+
+#else
+            // Windowsビルドのみフレーム補正＆バッファ平均化
+            if (bufferCount > 0)
+            {
+                currentAngularVelocity = gyroBuffer / bufferCount;
+                gyroBuffer = Vector2.zero;
+                bufferCount = 0;
+            }
+
+            float deltaTimeFactor = Time.deltaTime / 0.016f; // 60fps基準
+            Vector2 deltaPosition = new Vector2(
+                currentAngularVelocity.x * sensitivityX * deltaTimeFactor,
+                currentAngularVelocity.y * sensitivityY * deltaTimeFactor
+            );
+#endif
 
             currentAimPosition = Vector2.SmoothDamp(rectTransform.anchoredPosition, currentAimPosition + deltaPosition, ref smoothVelocity, smoothTime);
 
@@ -147,7 +184,8 @@ public class CrosshairMover : MonoBehaviour
         currentState = AimState.Calibrating;
         calibrationTimer = calibrationTime;
         calibrationSamples.Clear();
-        currentAngularVelocity = Vector2.zero;
+        gyroBuffer = Vector2.zero;
+        bufferCount = 0;
         Debug.Log("Calibration started...");
     }
 
@@ -159,9 +197,8 @@ public class CrosshairMover : MonoBehaviour
             return;
         }
 
-        float avgX = calibrationSamples.Average(v => v.x);
-        float avgY = calibrationSamples.Average(v => v.y);
-        gyroOffset = new Vector2(avgX, avgY);
+        Vector2 avg = new Vector2(calibrationSamples.Average(v => v.x), calibrationSamples.Average(v => v.y));
+        gyroOffset = avg;
 
         float sumSq = calibrationSamples.Sum(v => (v - gyroOffset).sqrMagnitude);
         float stdDev = Mathf.Sqrt(sumSq / calibrationSamples.Count);
