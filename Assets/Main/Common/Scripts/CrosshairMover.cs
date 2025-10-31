@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ public class CrosshairMover : MonoBehaviour
 
     private ReactiveProperty<bool> _shot = new ReactiveProperty<bool>();
     public ReactiveProperty<bool> ShotReactiveProperty => _shot;
+    
+    private bool _canShot = true;
+
+    [SerializeField] private float reloadTime = 2f;
 
     // -----------------------------
     // バッファ用（Windowsビルド用）
@@ -71,6 +76,20 @@ public class CrosshairMover : MonoBehaviour
 
         serialReceiver.serialHand.OnDataReceived += OnDataReceived;
         StartCalibration();
+        
+        _shot.Skip(1).Where(value => value).Subscribe(value => StartInterval());
+    }
+
+    void StartInterval()
+    {
+        _canShot = false;
+
+        // リロード時間が経過したら再び撃てるように
+        Observable.Timer(TimeSpan.FromSeconds(reloadTime))
+            .Subscribe(_ =>
+            {
+                _canShot = true;
+            });
     }
 
     void OnDestroy()
@@ -116,7 +135,7 @@ public class CrosshairMover : MonoBehaviour
                 bufferCount++;
 #endif
 
-                _shot.Value = (values.Length > 6 && values[6] == "1");
+                _shot.Value = (values.Length > 6 && values[6] == "1" && _canShot);
             }
         }
         catch { /* 無視 */ }

@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6918059ba8a71443a21968e52518421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SerialHand
-  portName: COM3
+  portName: COM7
   baudRate: 115200
 --- !u!1 &1058764187
 GameObject:
