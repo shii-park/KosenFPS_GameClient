@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StableGyroAim_NoAudio_Flip
   serialReceiver: {fileID: 1028405340}
-  sensitivityX: 30
+  sensitivityX: 33
   sensitivityY: 25
   deadZone: 0.1
   invertX: 1
