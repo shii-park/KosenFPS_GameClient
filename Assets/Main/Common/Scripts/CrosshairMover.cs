@@ -145,7 +145,7 @@ public class CrosshairMover : MonoBehaviour
     {
         if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame)
         {
-            StartCalibration();
+            rectTransform.anchoredPosition = Vector2.zero;
             return;
         }
 
