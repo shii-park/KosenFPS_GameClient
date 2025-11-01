@@ -42,6 +42,8 @@ public class ZonbieCore : MonoBehaviour
         this.gameObject.SetActive(true);
 
         _animator.SetBool("Dead", false);
+        _animator.Play(_animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, Random.Range(0f, 1f));
+
         //_zonbieMover.StartMove(destination, time);
     }
 
