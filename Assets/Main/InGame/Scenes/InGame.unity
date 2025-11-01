@@ -4497,6 +4497,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1534510528}
     m_Modifications:
+    - target: {fileID: 614480098851011172, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: MaxDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 614480098851011172, guid: 4a921b6d034869b40a0262978caad459, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3829301839349239471, guid: 4a921b6d034869b40a0262978caad459, type: 3}
       propertyPath: _end
       value: 
