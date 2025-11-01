@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &91324078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,7 +1128,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2025809544}
   m_Father: {fileID: 1587686787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1192,7 +1193,7 @@ MonoBehaviour:
   calibrationTime: 3
   stabilityThreshold: 10
   smoothTime: 0.05
-  reloadTime: 2
+  ReloadTime: 1
 --- !u!114 &1028405340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,7 +1576,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2025809544}
   - {fileID: 1028405334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1983,6 +1983,7 @@ GameObject:
   - component: {fileID: 2025809544}
   - component: {fileID: 2025809546}
   - component: {fileID: 2025809545}
+  - component: {fileID: 2025809547}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2002,7 +2003,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1587686787}
+  m_Father: {fileID: 1028405334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2047,6 +2048,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025809543}
   m_CullTransparentMesh: 1
+--- !u!114 &2025809547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025809543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3c683f9ce08b449b651fbba6d225fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrpsshairView
+  _gaugeImage: {fileID: 2025809545}
+  _crosshairMover: {fileID: 1028405339}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
