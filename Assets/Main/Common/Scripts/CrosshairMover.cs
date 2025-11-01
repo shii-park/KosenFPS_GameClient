@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -14,9 +16,9 @@ public class CrosshairMover : MonoBehaviour
 
     [Header("Axis Sensitivity")]
     [Tooltip("左右(X)方向の感度")]
-    public float sensitivityX = 220f; 
+    public float sensitivityX = 33f; 
     [Tooltip("上下(Y)方向の感度")]
-    public float sensitivityY = 200f; 
+    public float sensitivityY = 25f; 
 
     [Header("Aim Settings")]
     [Tooltip("微小なノイズを無視する範囲")]
@@ -47,6 +49,13 @@ public class CrosshairMover : MonoBehaviour
 
     private ReactiveProperty<bool> _shot = new ReactiveProperty<bool>();
     public ReactiveProperty<bool> ShotReactiveProperty => _shot;
+    
+    private bool _canShot = true;
+
+    [SerializeField] public float ReloadTime = 1f;
+    
+    private ReactiveProperty<float> _reloadTimer = new ReactiveProperty<float>();
+    public ReactiveProperty<float> ReloadTimer => _reloadTimer;
 
     // -----------------------------
     // バッファ用（Windowsビルド用）
@@ -57,6 +66,7 @@ public class CrosshairMover : MonoBehaviour
     void Start()
     {
         _shot.Value = false;
+        _reloadTimer.Value = ReloadTime;
         rectTransform = GetComponent<RectTransform>();
 
         if (serialReceiver == null)
@@ -71,6 +81,30 @@ public class CrosshairMover : MonoBehaviour
 
         serialReceiver.serialHand.OnDataReceived += OnDataReceived;
         StartCalibration();
+        
+        _shot.Skip(1).Where(value => value).Subscribe(value => StartInterval());
+    }
+
+    void StartInterval()
+    {
+        _canShot = false;
+
+        StartCoroutine(ShotCoroutine());
+    }
+
+    private IEnumerator ShotCoroutine()
+    {
+        _reloadTimer.Value = 0;
+
+        while (_reloadTimer.Value < ReloadTime)
+        {
+            _reloadTimer.Value += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+        _reloadTimer.Value = ReloadTime; 
+        
+        _canShot = true;
     }
 
     void OnDestroy()
@@ -116,7 +150,7 @@ public class CrosshairMover : MonoBehaviour
                 bufferCount++;
 #endif
 
-                _shot.Value = (values.Length > 6 && values[6] == "1");
+                _shot.Value = (values.Length > 6 && values[6] == "1" && _canShot);
             }
         }
         catch { /* 無視 */ }
@@ -126,7 +160,7 @@ public class CrosshairMover : MonoBehaviour
     {
         if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame)
         {
-            StartCalibration();
+            rectTransform.anchoredPosition = Vector2.zero;
             return;
         }
 
