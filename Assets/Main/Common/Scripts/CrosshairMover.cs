@@ -16,9 +16,9 @@ public class CrosshairMover : MonoBehaviour
 
     [Header("Axis Sensitivity")]
     [Tooltip("左右(X)方向の感度")]
-    public float sensitivityX = 220f; 
+    public float sensitivityX = 33f; 
     [Tooltip("上下(Y)方向の感度")]
-    public float sensitivityY = 200f; 
+    public float sensitivityY = 25f; 
 
     [Header("Aim Settings")]
     [Tooltip("微小なノイズを無視する範囲")]
